@@ -9,15 +9,18 @@ function run ($argc, $argv)
 
 		$curl = curl_init();
 
+		// curlの設定
 		curl_setopt($curl, CURLOPT_URL, $base_url.'api/hash?q='.htmlspecialchars($q));
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);  // curl_execの結果を文字列で返す
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);  
 
+		//APIから結果を入手
 		$response = curl_exec($curl);
 		$result = json_decode($response, true);
 		$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 
+		//ステータスコードで条件分岐
 		if ($http_status != '200') {
 			printf("Ooops, there is a glitch...");	
 		} else {
