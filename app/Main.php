@@ -16,9 +16,13 @@ function run ($argc, $argv)
 
 		$response = curl_exec($curl);
 		$result = json_decode($response, true);
-
+		$http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		curl_close($curl);
 
-		printf("%s",$response);
+		if ($http_status != '200') {
+			printf("There are some glitch!");	
+		} else {
+			printf("%s",$response['hash']);
+		}
   }
 }
