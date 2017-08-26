@@ -22,7 +22,7 @@ function run ($argc, $argv)
 		if ($http_status != '200') {
 			printf("Ooops, there is a glitch...");	
 		} else {
-			printf("%s",var_dump($response));
+			printf("%s",$result['hash']);
 		}
   }
 }
