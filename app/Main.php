@@ -20,9 +20,9 @@ function run ($argc, $argv)
 		curl_close($curl);
 
 		if ($http_status != '200') {
-			printf("There are some glitch!");	
+			printf("Ooops, there is a glitch...");	
 		} else {
-			printf("%s",$response['hash']);
+			printf("%s",var_dump($response));
 		}
   }
 }
